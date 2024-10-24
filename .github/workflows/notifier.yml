@@ -1,0 +1,17 @@
+name: Notify Telegram
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send notification to Telegram
+        uses: appleboy/telegram-action@v0.0.2
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: 'Вітаю! Ваш репозиторій отримав нові зміни.'
